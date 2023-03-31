@@ -82,7 +82,10 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
     ports:
-      - 8080:8081
+      - target: 8080
+        published: 8081
+        protocol: tcp
+        mode: host
     networks:
       - back-tier
     restart: always
@@ -95,7 +98,10 @@ services:
     depends_on:
       - prometheus
     ports:
-      - 3000:3001
+      - target: 3000
+        published: 3001
+        protocol: tcp
+        mode: host
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
