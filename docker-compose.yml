@@ -88,7 +88,7 @@ services:
         mode: host
     networks:
       - back-tier
-    restart: always
+    restart: unless-stopped
     deploy:
       mode: global
 
