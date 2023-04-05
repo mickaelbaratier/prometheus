@@ -85,7 +85,7 @@ services:
       - 58080:8080
     networks:
       - back-tier
-    restart: always
+    restart: unless-stopped
     deploy:
       mode: global
 
@@ -96,6 +96,7 @@ services:
       - prometheus
     ports:
       - 53000:3000
+
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
